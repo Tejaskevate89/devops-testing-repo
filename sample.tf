@@ -1,3 +1,13 @@
+terraform {
+  backend "s3" {
+    bucket = "tf-test-bucket-198"
+    region = "ap-south-1"
+    key = "tfstate-file"
+  }
+}
+
+
+
 provider "aws" {
   region = "ap-south-1"
 }
