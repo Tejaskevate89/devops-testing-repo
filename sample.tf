@@ -31,9 +31,8 @@ variable "instance_type" {
   default = "t2.nano"
 }
 
-output "instance_id" {
+output "instance_ip" {
   value = aws_instance.sampleinstance.public_ip
-  value = aws_instance.sampleinstance.instance_id
 }
 output "instance_id" {
   value = aws_instance.sampleinstance.id
