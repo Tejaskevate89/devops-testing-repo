@@ -1,3 +1,9 @@
+locals {
+  instance_name = "my_firstinstance"
+}
+
+
+
 terraform {
   backend "s3" {
     bucket = "tf-test-bucket-198"
@@ -20,10 +26,24 @@ resource "aws_instance" "sampleinstance" {
   availability_zone = "ap-south-1b"
 
   tags = {
-    name = "firsttfinstance"
+    name = local.instance_name
   }
 }
 
+data "aws_security_groups" "launch-wizard-1" {
+  filter {
+    name = "vpc-id"
+    values = [var.vpc_id]
+  }
+  filter {
+    name = "group-name"
+    values = ["launch-wizard-1"]
+  }
+}
+
+variable "vpc_id" {
+  default = "vpc-038a56f95e3f8a2de"
+}
 variable "ami_id" {
   default = "ami-019715e0d74f695be"
 }
