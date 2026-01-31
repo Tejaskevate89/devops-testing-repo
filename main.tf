@@ -17,7 +17,7 @@ resource "aws_instance" "sampleinstance" {
   instance_type = var.instance_type
   vpc_security_group_ids = data.aws_security_groups.launch-wizard-1.ids
   key_name = "Mrsa"
-  availability_zone = "ap-south-1b"
+  availability_zone = "ap-south-1"
 
   tags = {
     Name = local.instance_name
