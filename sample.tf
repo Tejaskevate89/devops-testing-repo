@@ -21,7 +21,7 @@ provider "aws" {
 resource "aws_instance" "sampleinstance" {
   ami = var.ami_id
   instance_type = var.instance_type
-  vpc_security_group_ids = ["sg-0f01a7147cd53b3a5"]
+  vpc_security_group_ids = data.aws_security_groups.launch-wizard-1.id
   key_name = "Mrsa"
   availability_zone = "ap-south-1b"
 
